@@ -18,11 +18,19 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class FRC2012 extends IterativeRobot {
+    
+    private Input input;
+    private Output output;
+    private FBW robotThink; 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+        this.input = new Input();
+        this.output = new Output();
+        this.robotThink = new FBW();
+        
 
     }
     
@@ -34,7 +42,7 @@ public class FRC2012 extends IterativeRobot {
         
     }
     
-    public void periodicInit() {
+    public void teleopInit() {
         
     }
     
@@ -53,7 +61,15 @@ public class FRC2012 extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        double leftX;
+        double rightX;
+        double leftY;
+        double rightY;
+        leftX = this.input.getAxis(this.input.left, this.input.xAxis);
+        rightX = this.input.getAxis(this.input.right, this.input.xAxis);
+        leftY = this.input.getAxis(this.input.left, this.input.xAxis);
+        rightY = this.input.getAxis(this.input.right, this.input.xAxis);
+        this.output.setMotors(leftX, leftY, rightX, rightY);
     }
     
 }
