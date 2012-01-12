@@ -10,4 +10,8 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class Input {
     
+    public Input() {
+        
+    }
+    
 }
